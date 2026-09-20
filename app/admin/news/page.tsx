@@ -29,7 +29,7 @@ export default function NewsAdminPage() {
   useEffect(() => {
     client
       .fetch(`*[_type == "news"] | order(publishedAt desc) { _id, title, slug, publishedAt, image, content }`)
-      .then((posts) => setNewsPosts(posts))
+      .then((posts: NewsPost[]) => setNewsPosts(posts))
       .catch(() => setNewsPosts([]));
   }, []);
 
@@ -151,4 +151,3 @@ export default function NewsAdminPage() {
     </div>
   );
 }
-

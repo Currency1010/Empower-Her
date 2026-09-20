@@ -30,7 +30,7 @@ export default function GalleryAdminPage() {
   useEffect(() => {
     client
       .fetch(`*[_type == "gallery"] | order(_createdAt desc) { _id, title, slug, image, caption }`)
-      .then((items) => setGalleryItems(items))
+      .then((items: GalleryItem[]) => setGalleryItems(items))
       .catch(() => setGalleryItems([]));
   }, []);
 
@@ -146,4 +146,3 @@ export default function GalleryAdminPage() {
     </div>
   );
 }
-
