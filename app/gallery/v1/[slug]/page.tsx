@@ -6,7 +6,7 @@ import BackLink from "@/components/BackLink";
 
 async function getGalleryItem(slug: string) {
   const item = await client.fetch(
-    `*[_type == "gallery" && slug.current == $slug][0]{
+    `*[_type == "gallery" && (slug.current == $slug || _id == $slug)][0]{
       _id,
       title,
       slug,

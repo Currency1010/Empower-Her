@@ -9,7 +9,7 @@ import BackLink from "@/components/BackLink";
 async function getNews(slug: string) {
   return await client.fetch(
     `
-    *[_type == "news" && slug.current == $slug][0]{
+    *[_type == "news" && (slug.current == $slug || _id == $slug)][0]{
       _id,
       title,
       slug,

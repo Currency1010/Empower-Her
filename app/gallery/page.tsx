@@ -54,7 +54,7 @@ export default async function GalleryPage() {
             {gallery.map((item: any, index: number) => (
               <AnimatedSection key={item._id} delay={index * 0.1}>
                 <Link
-                  href={`/gallery/v1/${item.slug.current}`}
+                  href={`/gallery/v1/${item.slug?.current ?? item._id}`}
                   className="block h-full bg-gray-50 border border-gray-200 hover:shadow-lg transition-shadow duration-300 overflow-hidden"
                 >
                   <div className="relative aspect-[16/10]">

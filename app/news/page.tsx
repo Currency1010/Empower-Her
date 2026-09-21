@@ -107,7 +107,7 @@ export default async function NewsPage() {
                     </p>
 
                     <Link
-                      href={`/news/v1/${post.slug.current}`}
+                      href={`/news/v1/${post.slug?.current ?? post._id}`}
                       className="inline-flex items-center gap-2 text-primary font-semibold hover:text-secondary mt-auto"
                     >
                       Read More
