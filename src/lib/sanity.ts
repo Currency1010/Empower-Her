@@ -1,17 +1,11 @@
 import { createClient } from "next-sanity";
 
-const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
-const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET;
+const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "632195ep";
+const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || "production";
 
-export const isSanityConfigured = Boolean(projectId && dataset);
-
-export const client = isSanityConfigured
-  ? createClient({
-      projectId,
-      dataset,
-      apiVersion: "2025-01-01",
-      useCdn: false,
-    })
-  : ({
-      fetch: async () => [],
-    } as any);
+export const client = createClient({
+  projectId,
+  dataset,
+  apiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION || "2026-09-20",
+  useCdn: true,
+});
